@@ -26,6 +26,7 @@ public class path2Nodes {
 		Node srcNode=init();
 		display(graph);
 		System.out.println(findPath(srcNode,"d"));
+		//displayFromNode(srcNode);
 	}
 	
 	private static boolean findPath(Node srcNode, String dest){
@@ -63,7 +64,7 @@ public class path2Nodes {
 		return false;
 	}
 	
-	private static Node init(){
+	/*private static Node init(){
 		Node node = new Node("b");
 		node.adjList.add(new Node("a"));
 		node.adjList.add(new Node("f"));
@@ -84,6 +85,35 @@ public class path2Nodes {
 		Node srcNode = node;
 		graph.add(node);
 		return srcNode;
+	}*/
+	
+	private static Node init(){
+		Node a = new Node("a");
+		Node b = new Node("b");
+		Node c = new Node("c");
+		Node d = new Node("d");
+		Node e = new Node("e");
+		Node f = new Node("f");
+		
+		b.adjList.add(a);
+		b.adjList.add(f);
+		//node.adjList.add(new Node("d"));
+		
+		c.adjList.add(b);
+		c.adjList.add(d);
+		c.adjList.add(e);
+		
+		a.adjList.add(b);
+		a.adjList.add(c);
+		
+		graph.add(c);
+		graph.add(d);
+		graph.add(e);
+		graph.add(f);
+		graph.add(b);
+		graph.add(a);
+		Node srcNode = a;
+		return srcNode;
 	}
 	
 	private static void display(ArrayList<Node> gr){
@@ -96,5 +126,25 @@ public class path2Nodes {
 			System.out.println();
 		}
 	}
-
+	
+	private static void displayFromNode(Node srcNode){
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(srcNode);
+		q.add(null);
+		Node e;
+		
+		while(!q.isEmpty()){
+			e = q.remove();
+			if(e==null){
+				System.out.println();
+				if(!q.isEmpty()) q.add(null);
+			}else{
+				System.out.print(e.name);
+				System.out.print(" ");
+			for(Node n: e.adjList){
+				q.add(n);
+			}
+			}
+		}
+	}
 }
