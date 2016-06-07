@@ -89,7 +89,7 @@ public class path2Nodes {
 	
 	private static Node init(){
 		Node a = new Node("a");
-		Node b = new Node("b");
+		Node b = new Node("b");  
 		Node c = new Node("c");
 		Node d = new Node("d");
 		Node e = new Node("e");
