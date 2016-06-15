@@ -26,7 +26,7 @@ public class path2Nodes {
 		Node srcNode=init();
 		display(graph);
 		System.out.println(findPath(srcNode,"d"));
-		//displayFromNode(srcNode);
+		displayFromNode(srcNode);
 	}
 	
 	private static boolean findPath(Node srcNode, String dest){
