@@ -19,7 +19,7 @@ public class TreeFromArray_2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Integer[] a = {1, 2, 3, 4, 5};
+		Integer[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 		//System.out.println(a);
 		Node root = treeFromArray(a);
 		displayTree(root);
@@ -54,6 +54,8 @@ public class TreeFromArray_2 {
 			}else if(n!=null){
 				System.out.print(n.dat);
 				System.out.print(" ");
+				if(n.left != null) q.add(n.left);
+				if(n.right!= null) q.add(n.right);
 			}
 		}
 	}
