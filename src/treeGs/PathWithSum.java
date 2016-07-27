@@ -3,7 +3,7 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 public class PathWithSum {
-	private static class Node{
+	protected static class Node{
 		int data;
 		Node left;
 		Node right;
@@ -39,7 +39,7 @@ public class PathWithSum {
 		if(root.right!= null) cntPaths(root.right, sum, currSum);
 	}
 	
-	private static void printTree(Node root){
+	public static void printTree(Node root){
 		Queue<Node> q = new LinkedList<Node>();
 		Node n;
 		q.add(root);
@@ -58,7 +58,7 @@ public class PathWithSum {
 		}
 	}
 	
-	private static Node createTree(){
+	public static Node createTree(){
 		Node a = new Node(5);
 		Node b = new Node(8);
 		Node c = new Node(3);
@@ -67,7 +67,9 @@ public class PathWithSum {
 		Node f = new Node(2);
 		Node g = new Node(2);
 		Node h = new Node(-1);
+		Node i = new Node(1);
 		
+		h.left = i;
 		e.left  = g;
 		f.right = h;
 		b.left  = d;
