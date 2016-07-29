@@ -1,34 +1,34 @@
 package recuDP;
-import java.util.HashMap;
-//we can just use an array instead of HashMap, since it is just having keys from 1 to n
-//understand that final answer is stored in an integer. This program works well as long as int variable can
-//hold the answer. But it will quickly overflow after 36.
-//Using long will give some solace. It can be effectively solved using BigInteger class.
-//Its nice to show the interviewer that u think abt these issues
+
+import java.util.Arrays;
 
 public class TripleStep {
-	private static int[] steps = {1,2,3};
-	private static HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
-	
+	private static int[] arr;
+	private static int[] steps = {1, 2, 3};
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int n=37;
-		hm.put(0, 1);
-		int totalWays = tripleStep(n);
-		System.out.println(totalWays);
+		int n = 5;
+		arr = new int[n+1];
+		Arrays.fill(arr, -1);
+		//System.out.println(arr[n]);
+		int numOfWays = tripleStep(n);
+		System.out.println(numOfWays);
 	}
 	private static int tripleStep(int n){
-		if(hm.containsKey(n)) return hm.get(n);
-		int totalWays=0;
-		
-		//System.out.println("tripleStep");
-		for(int step: steps){
-			if(n>=step){
-				totalWays += tripleStep(n-step);
-			}
+		//System.out.println(arr[n]+" "+n);
+		int total=0;
+		if(n==0) return 1;
+		else if(arr[n]!=-1){
+			//System.out.println(arr[n]+" "+n);
+			return arr[n];
 		}
-		if(!hm.containsKey(n)) hm.put(n, totalWays);
-		return totalWays;
+		else{
+			for(int step: steps){
+				if(n>=step) total += tripleStep(n-step);
+			}
+			arr[n] = total;
+			return total;
+		}
 	}
-	
+
 }
